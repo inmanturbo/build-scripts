@@ -21,7 +21,7 @@ foreach ($diffLines as $line) {
 
     $destPathSuffix = preg_match('#^app/#', $file) ? str_replace('app/', 'src/', $file) : $file;
     $destPath = $buildDir . '/' . $destPathSuffix;
-    @mkdir(dirname($destPath), 0777, true);
+    mkdir(dirname($destPath), 0777, true);
 
     exec("git show $branchB:\"$file\"", $fileContents);
     file_put_contents($destPath, implode("\n", $fileContents));

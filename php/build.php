@@ -20,7 +20,7 @@ foreach ($diffLines as $line) {
     }
 
     $destPath = $buildDir . '/' . $file;
-    @mkdir(dirname($destPath), 0777, true);
+    mkdir(dirname($destPath), 0777, true);
 
     exec("git show $branchB:\"$file\"", $fileContents);
     file_put_contents($destPath, implode("\n", $fileContents));
